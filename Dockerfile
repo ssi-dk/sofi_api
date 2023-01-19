@@ -23,12 +23,13 @@ RUN conda install -c conda-forge fastapi
 RUN conda install uvicorn
 
 # Install code for REST interface
+WORKDIR /app
 COPY rest_interface rest_interface/
 
 # Documents which ports are exposed (It is only used for documentation)
 EXPOSE 7000
 
 # Start Uvicorn and listen on port
-# WORKDIR /app/rest_interface/
-# Don't start Uvicorn here but in docker-compose.yml
-# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7000"]
+#WORKDIR /app/rest_interface
+#CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7000" "--reload"]
+CMD ["uvicorn", "rest_interface.main:app", "--host", "0.0.0.0", "--port", "7000", "--reload"]
