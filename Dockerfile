@@ -27,9 +27,12 @@ RUN conda install uvicorn
 WORKDIR /app
 COPY rest_interface rest_interface/
 
-# Define a volume for sharing data with host
+# Define volumes
 RUN mkdir /data
-VOLUME /data
+WORKDIR /data
+# Distance matrices (should be mounted read-only)
+RUN mkdir dm
+VOLUME /data/dm
 
 # Documents which ports are exposed (It is only used for documentation)
 EXPOSE 7000
@@ -37,4 +40,5 @@ EXPOSE 7000
 # Start Uvicorn and listen on port
 #WORKDIR /app/rest_interface
 #CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7000" "--reload"]
+WORKDIR /app
 CMD ["uvicorn", "rest_interface.main:app", "--host", "0.0.0.0", "--port", "7000", "--reload"]
