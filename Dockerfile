@@ -5,7 +5,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
-# Install ReporTree
+# Install ReporTree - see https://github.com/insapathogenomics/ReporTree#installation-with-conda
 RUN conda install -c etetoolkit -c anaconda -c bioconda python=3.8 biopython=1.77 pandas=1.1.3 numpy=1.19.2 grapetree=2.1 treecluster=1.0.3 ete3 scikit-learn cgmlst-dists git --yes
 RUN git clone  --depth 1 --branch v1.1.2 https://github.com/insapathogenomics/ReporTree
 RUN chmod 755 ReporTree/reportree.py
@@ -13,6 +13,7 @@ WORKDIR /app/ReporTree/scripts/
 RUN git clone https://github.com/insapathogenomics/GrapeTree
 RUN git clone https://github.com/insapathogenomics/ComparingPartitions
 RUN git clone https://github.com/vmixao/vcf2mst.git
+
 WORKDIR /app/ReporTree/
 ENV PATH="/app/ReporTree:${PATH}"
 
