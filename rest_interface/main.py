@@ -6,6 +6,9 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+DM_PATH_SALMONELLA = '/data/dm/dm_salmonella.tsv'
+# DM_SALMONELLA = open(DM_PATH_SALMONELLA, 'r')
+
 class Job(BaseModel):
     job_number: int
     timeout: int = 2
