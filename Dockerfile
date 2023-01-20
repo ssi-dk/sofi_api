@@ -27,6 +27,10 @@ RUN conda install uvicorn
 WORKDIR /app
 COPY rest_interface rest_interface/
 
+# Define a volume for sharing data with host
+RUN mkdir /data
+VOLUME /data
+
 # Documents which ports are exposed (It is only used for documentation)
 EXPOSE 7000
 
