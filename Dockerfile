@@ -28,11 +28,13 @@ WORKDIR /app
 COPY rest_interface rest_interface/
 
 # Define volumes
+RUN mkdir /test_data
+COPY test_data/dm /test_data/dm/
+VOLUME /test_data
+
 RUN mkdir /data
-WORKDIR /data
-# Distance matrices (should be mounted read-only)
-RUN mkdir dm
-VOLUME /data/dm
+RUN mkdir /data/dm
+VOLUME /data
 
 # Documents which ports are exposed (It is only used for documentation)
 EXPOSE 7000
