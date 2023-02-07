@@ -1,5 +1,3 @@
-#!/usr/bin/env	python3
-
 """
 Obtain genetic clusters at any partition level(s) of a distance matrixes using hierarchical clustering
 By Veronica Mixao

@@ -1,3 +1,9 @@
+"""
+Based on the work of Veronica Mixao @INSA
+
+Modified by Finn Gruwier Larsen <figl@ssi.dk>
+"""
+
 from scipy.spatial.distance import squareform
 from scipy.cluster.hierarchy import dendrogram, linkage, fcluster, maxdists, to_tree
 
