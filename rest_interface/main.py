@@ -4,29 +4,24 @@ from pydantic import BaseModel
 
 from fastapi import FastAPI
 
+from reportree.partitioning_HC import HC
+
 app = FastAPI()
 
 DM_PATH_SALMONELLA = '/data/dm/dm_salmonella.tsv'
 # DM_SALMONELLA = open(DM_PATH_SALMONELLA, 'r')
 
-class Job(BaseModel):
+class HCJob(BaseModel, HC):
     job_number: int
     timeout: int = 2
-    columns_summary_report: list
-    metadata2report: list
-    frequency_matrix: list
-    count_matrix: list
-    matrix_4_grapetree: bool
-    mx_transpose: bool
-    analysis: str
-    threshold: list
+
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
 
 @app.post("/reportree/start_job/")
-async def start_job(job: Job):
+async def start_job(job: HCJob):
     
     # Original command from
     # https://github.com/insapathogenomics/ReporTree/wiki/4.-Examples#outbreak-detection---bacterial-foodborne-pathogen-eg-listeria-monocytogenes
