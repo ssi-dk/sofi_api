@@ -11,9 +11,21 @@ app = FastAPI()
 DM_PATH_SALMONELLA = '/data/dm/dm_salmonella.tsv'
 # DM_SALMONELLA = open(DM_PATH_SALMONELLA, 'r')
 
-class HCJob(BaseModel, HC):
+class HCJob(BaseModel):
     job_number: int
     timeout: int = 2
+
+    # The following fields are replica of the fields in the HC class
+    out:str
+    distance_matrix:str = ''
+    allele_profile:str = ''
+    method_threshold:str = 'single'
+    pct_HCmethod_threshold: str = 'none'
+    samples_called:float = 0.0
+    loci_called:float = ''
+    metadata:str = ''
+    filter_column:str = ''
+    dist:float = 1.0
 
 
 @app.get("/")
