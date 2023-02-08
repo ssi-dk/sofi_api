@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 from fastapi import FastAPI
 
-from reportree.partitioning_HC import HC
+from partitioning_HC import HC
 
 app = FastAPI()
 

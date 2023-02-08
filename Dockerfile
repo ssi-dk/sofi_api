@@ -19,7 +19,7 @@ RUN conda install uvicorn
 
 # Install code for REST interface
 WORKDIR /app
-COPY rest_interface rest_interface/
+COPY * /app/
 
 # Define volumes
 RUN mkdir /test_data
@@ -37,4 +37,4 @@ EXPOSE 7000
 #WORKDIR /app/rest_interface
 #CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7000" "--reload"]
 WORKDIR /app
-CMD ["uvicorn", "rest_interface.main:app", "--host", "0.0.0.0", "--port", "7000", "--reload"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7000", "--reload"]
